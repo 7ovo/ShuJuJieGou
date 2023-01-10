@@ -1,7 +1,6 @@
 package com.chf.tree;
 
 import com.chf.linear.Queue;
-import java.util.Iterator;
 
 public class BinaryTreeTest {
     public static void main(String[] args) {
@@ -97,5 +96,7 @@ public class BinaryTreeTest {
         for(Integer key : layerErgodic){
             System.out.println(key + "---" + tree.get(key));
         }
+        System.out.println("================================================");
+        System.out.println("树的最大深度为：" + tree.maxDepth());//4
     }
 }

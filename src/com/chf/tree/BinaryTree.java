@@ -6,6 +6,23 @@ public class BinaryTree<K extends Comparable<K>, V> {
     private Node root;
     private int N;
 
+    /**
+     * 内部私有节点类
+     */
+    private class Node {
+        public K key;//键
+        public V value;//值
+        public Node left;//左子树
+        public Node right;//右子树
+
+        public Node(K key, V value, BinaryTree<K, V>.Node left, BinaryTree<K, V>.Node right) {
+            this.key = key;
+            this.value = value;
+            this.left = left;
+            this.right = right;
+        }
+    }
+
     public int size() {
         return this.N;
     }
@@ -26,7 +43,7 @@ public class BinaryTree<K extends Comparable<K>, V> {
      * @param value
      * @return
      */
-    public Node put(Node node, K key, V value) {
+    private Node put(Node node, K key, V value) {
         if (node == null) {
             ++this.N;
             return new Node(key, value, null,null);
@@ -58,7 +75,7 @@ public class BinaryTree<K extends Comparable<K>, V> {
      * @param key
      * @return
      */
-    public V get(Node node, K key) {
+    private V get(Node node, K key) {
         if (node == null) {
             return null;
         } else {
@@ -87,7 +104,7 @@ public class BinaryTree<K extends Comparable<K>, V> {
      * @param key
      * @return
      */
-    public Node delete(Node node, K key) {
+    private Node delete(Node node, K key) {
         if (node == null) {
             return null;
         } else {
@@ -134,11 +151,11 @@ public class BinaryTree<K extends Comparable<K>, V> {
     }
 
     /**
-     * 获取树中最小的元素
+     * 获取指定树中最小的元素
      * @param node
      * @return 返回元素
      */
-    public Node min(Node node) {
+    private Node min(Node node) {
         if (node == null) {
             return null;
         } else {
@@ -155,11 +172,11 @@ public class BinaryTree<K extends Comparable<K>, V> {
     }
 
     /**
-     * 获取树中最大的元素
+     * 获取指定树中最大的元素
      * @param node
      * @return 返回元素
      */
-    public Node max(Node node) {
+    private Node max(Node node) {
         if (node == null) {
             return null;
         } else {
@@ -182,7 +199,7 @@ public class BinaryTree<K extends Comparable<K>, V> {
      * @param node
      * @param keys
      */
-    public void preErgodic(Node node, Queue<K> keys) {
+    private void preErgodic(Node node, Queue<K> keys) {
         if(node == null) return;
         keys.enqueue(node.key);
         if (node.left != null) this.preErgodic(node.left, keys);
@@ -204,7 +221,7 @@ public class BinaryTree<K extends Comparable<K>, V> {
      * @param node
      * @param keys
      */
-    public void midErgodic(Node node, Queue<K> keys) {
+    private void midErgodic(Node node, Queue<K> keys) {
         if(node == null) return;
         if (node.left != null) this.preErgodic(node.left, keys);
         keys.enqueue(node.key);
@@ -226,7 +243,7 @@ public class BinaryTree<K extends Comparable<K>, V> {
      * @param node
      * @param keys
      */
-    public void afterErgodic(Node node, Queue<K> keys) {
+    private void afterErgodic(Node node, Queue<K> keys) {
         if(node == null) return;
         if (node.left != null) this.preErgodic(node.left, keys);
         if (node.right != null) this.preErgodic(node.right, keys);
@@ -252,19 +269,27 @@ public class BinaryTree<K extends Comparable<K>, V> {
     }
 
     /**
-     * 内部私有节点类
+     * 获取整个树的最大深度
+     * @return
      */
-    private class Node {
-        public K key;//键
-        public V value;//值
-        public Node left;//左子树
-        public Node right;//右子树
+    public int maxDepth(){
+        return maxDepth(this.root);
+    }
 
-        public Node(K key, V value, BinaryTree<K, V>.Node left, BinaryTree<K, V>.Node right) {
-            this.key = key;
-            this.value = value;
-            this.left = left;
-            this.right = right;
-        }
+    /**
+     * 获取指定树的最大深度
+     * @param node
+     * @return
+     */
+    private int maxDepth(Node node){
+        if(node == null) return 0;
+        //计算根结点的左子树最大深度
+        int maxLeft = 0;
+        if(node.left != null) maxLeft = maxDepth(node.left);
+        //计算根结点的右子树最大深度
+        int maxRight = 0;
+        if(node.right != null) maxRight = maxDepth(node.right);
+        //比较即可
+        return maxLeft > maxRight ? maxLeft + 1 : maxRight + 1;
     }
 }
