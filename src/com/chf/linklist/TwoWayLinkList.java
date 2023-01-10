@@ -15,8 +15,8 @@ public class TwoWayLinkList<T> implements Iterable<T>{
 
     private class Node{
         public T item;//存储数据
-        public Node pre;//指向上一个结点
-        public Node next;//指向下一个结点
+        public Node pre;//指向上一个节点
+        public Node next;//指向下一个节点
         public Node(T item,Node pre,Node next){
             this.item = item;
             this.pre = pre;
@@ -71,18 +71,18 @@ public class TwoWayLinkList<T> implements Iterable<T>{
     //插入元素t
     public void insert(T t){
         if(isEmpty()){  //如果链表为空
-            //创建新的结点
+            //创建新的节点
             Node newNode = new Node(t,head,null);
-            //让新结点称为尾结点
+            //让新节点成为尾结点
             last = newNode;
             //让头结点指向尾结点
             head.next = last;
         }else {
-            //创建新的结点
+            //创建新的节点
             Node newNode = new Node(t,last,null);
-            //让当前的尾结点指向新结点
+            //让当前的尾结点指向新节点
             last.next = newNode;
-            //让新结点称为尾结点
+            //让新节点称为尾结点
             last = newNode;
         }
         N++;
@@ -90,18 +90,18 @@ public class TwoWayLinkList<T> implements Iterable<T>{
 
     //在指定位置i处插入元素t
     public void insert(int i,T t){
-        //找到i位置的前一个结点
+        //找到i位置的前一个节点
         Node preNode = head;
         for(int index = 0;index < i;index++){
             preNode = preNode.next;
         }
-        //找到i位置的结点
+        //找到i位置的节点
         Node currentNode = preNode.next;
-        //创建新结点
+        //创建新节点
         Node newNode = new Node(t,preNode,currentNode);
-        //让i位置的前一个结点的下一个结点变为新结点（也就是当前结点）
+        //让i位置的前一个节点的下一个节点变为新节点（也就是当前节点）
         preNode.next = newNode;
-        //让i位置的前一个结点变为新结点
+        //让i位置的前一个节点变为新节点
         currentNode.pre = newNode;
         N++;//元素个数+1
     }
@@ -129,18 +129,18 @@ public class TwoWayLinkList<T> implements Iterable<T>{
 
     //删除位置i处的元素，并返回该元素的值
     public T remove(int i){
-        //找到i位置的前一个结点
+        //找到i位置的前一个节点
         Node preNode = head;
         for(int index = 0;index < i;index++){
             preNode = preNode.next;
         }
         //找到i位置的结点
         Node currentNode = preNode.next;
-        //找到i位置的下一个结点
+        //找到i位置的下一个节点
         Node nextNode = currentNode.next;
-        //让i位置的前一个结点的下一个结点变为i位置的下一个结点
+        //让i位置的前一个节点的下一个节点变为i位置的下一个节点
         preNode.next = nextNode;
-        //让i位置的下一个结点的上一个结点变为i位置的前一个结点
+        //让i位置的下一个节点的上一个节点变为i位置的前一个节点
         currentNode.pre = preNode;
         N--;//元素个数-1
         return currentNode.item;

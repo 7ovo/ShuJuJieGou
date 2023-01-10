@@ -18,7 +18,7 @@ public class LinkList<T> implements Iterable<T>{
     //结点类
     private class Node{
         T item;//存储数据
-        Node next;//指向下一个结点
+        Node next;//指向下一个节点
 
         public Node(T item,Node next){
             this.item = item;
@@ -59,46 +59,46 @@ public class LinkList<T> implements Iterable<T>{
 
     //向链表中添加元素t
     public void insert(T t){
-        //找到当前最后一个结点
+        //找到当前最后一个节点
         Node n = head;
         while(n.next != null){
             n = n.next;
         }
-        //创建新结点，保存元素t
+        //创建新节点，保存元素t
         Node newNode = new Node(t,null);
-        //让当前最后一个结点指向新结点
+        //让当前最后一个节点指向新节点
         n.next = newNode;
         N++;//长度+1
     }
 
     //向指定位置i处，添加元素
     public void insert(int i,T t){
-        //找到i位置前一个结点
-        Node preNode = head;
-        for(int index = 0;index < i;index++){
-            preNode = preNode.next;
-        }
-        //找到i位置的结点
-        Node currentNode = preNode.next;
-        //创建新结点，并且新结点需要指向原来i位置的节点
-        Node newNode = new Node(t,currentNode);
-        //原来i位置的前一个结点指向新结点即可
-        preNode.next = newNode;
-        N++;
-    }
-
-    //删除并返回位置i处的元素
-    public T remove(int i){
-        //找到i位置前一个结点
+        //找到i位置前一个节点
         Node preNode = head;
         for(int index = 0;index < i;index++){
             preNode = preNode.next;
         }
         //找到i位置的节点
         Node currentNode = preNode.next;
-        //找到i位置后一个结点
+        //创建新节点，并且新节点需要指向原来i位置的节点
+        Node newNode = new Node(t,currentNode);
+        //原来i位置的前一个节点指向新节点即可
+        preNode.next = newNode;
+        N++;
+    }
+
+    //删除并返回位置i处的元素
+    public T remove(int i){
+        //找到i位置前一个节点
+        Node preNode = head;
+        for(int index = 0;index < i;index++){
+            preNode = preNode.next;
+        }
+        //找到i位置的节点
+        Node currentNode = preNode.next;
+        //找到i位置后一个节点
         Node nextNode = currentNode.next;
-        //前一个结点指向下一个结点
+        //前一个节点指向下一个节点
         preNode.next = nextNode;
         N--;
         return currentNode.item;
@@ -106,7 +106,7 @@ public class LinkList<T> implements Iterable<T>{
 
     //查找元素t在链表中第一次出现的位置
     public int indexOf(T t){
-        //从头结点开始，依次找到每一个结点，取出item，和t比较，如果相同就找到了
+        //从头节点开始，依次找到每一个节点，取出item，和t比较，如果相同就找到了
         Node n = head;
         for(int i = 0;n.next != null;i++){
             n = n.next;

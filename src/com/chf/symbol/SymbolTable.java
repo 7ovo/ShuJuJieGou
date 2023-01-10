@@ -7,7 +7,7 @@ public class SymbolTable<K,V> {
     private class Node{
         public K key;//键
         public V value;//值
-        public Node next;//指向下一个结点
+        public Node next;//指向下一个节点（有效元素）
         public Node(K key,V value,Node next){
             this.key = key;
             this.value = value;
@@ -46,7 +46,7 @@ public class SymbolTable<K,V> {
                 return;
             }
         }
-        //符号表内若不存在其键 则创建新的结点 保存到符号表内即可 将新结点插入到链表的头部
+        //符号表内若不存在其键 则创建新的节点 保存到符号表内即可 将新节点插入到链表的头部
         Node newNode = new Node(key, value, null);
         Node n = head.next;
         head.next = newNode;

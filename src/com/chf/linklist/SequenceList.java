@@ -41,7 +41,7 @@ public class SequenceList<T> implements Iterable<T>{
     //向线性表中添加元素t，可扩容为原数组的两倍大小
     public void insert(T t){
         if(N == eles.length){
-            resize(2*eles.length);
+            resize(2 * eles.length);
         }
         eles[N++] = t;
     }
@@ -49,7 +49,7 @@ public class SequenceList<T> implements Iterable<T>{
     //向i元素处插入元素t，可扩容为原数组的两倍大小
     public void insert(int i,T t){
         if(N == eles.length){
-            resize(2*eles.length);
+            resize(2 * eles.length);
         }
         //先将i索引处的元素及其后面的元素依次向后移动一位
         for(int index = N;index > i;index--) {

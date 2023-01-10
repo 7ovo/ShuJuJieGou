@@ -7,7 +7,7 @@ public class OrderSymbolTable<K extends Comparable<K>,V> {
     private class Node{
         public K key;//键
         public V value;//值
-        public Node next;//指向下一个结点
+        public Node next;//指向下一个首节点(有效元素)
         public Node(K key,V value,Node next){
             this.key = key;
             this.value = value;
@@ -37,19 +37,19 @@ public class OrderSymbolTable<K extends Comparable<K>,V> {
      * @param value 值
      */
     public void put(K key,V value){
-        //定义两个结点 分别记录当前结点和当前结点的上一个结点
+        //定义两个节点 分别记录当前节点和当前节点的上一个节点
         Node currentNode = head.next;
         Node preNode = head;
         while (currentNode != null && key.compareTo(currentNode.key) > 0){
-            preNode = currentNode;//当前结点的上一个结点变成当前结点
-            currentNode = currentNode.next;//继续指向下一个结点
+            preNode = currentNode;//当前节点的上一个节点变成当前节点
+            currentNode = currentNode.next;//继续指向下一个节点
         }
-        //如果当前结点的键和要插入的key一样则替换
+        //如果当前节点的键和要插入的key一样则替换
         if(currentNode != null && key.compareTo(currentNode.key) == 0){
              currentNode.value = value;
              return;
         }
-        //如果当前结点的键和要插入的key不一样 就把新的结点插到当前结点之前
+        //如果当前节点的键和要插入的key不一样 就把新的节点插到当前节点之前
         Node newNode = new Node(key,value,currentNode);
         preNode.next = newNode;
 
