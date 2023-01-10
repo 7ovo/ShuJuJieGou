@@ -4,9 +4,6 @@ import com.chf.linear.Queue;
 import java.util.Iterator;
 
 public class BinaryTreeTest {
-    public BinaryTreeTest() {
-    }
-
     public static void main(String[] args) {
         BinaryTree<Integer, String> tree = new BinaryTree<>();
         tree.put(4, "赵六");
@@ -17,49 +14,88 @@ public class BinaryTreeTest {
         tree.put(10, "阿巴");
         tree.put(5, "七七");
         tree.put(9, "舅子");
-        System.out.println("二叉树的元素个数为：" + tree.size());
-        String node = (String)tree.get(2);
-        System.out.println("key为2的元素为：" + node);
+        System.out.println("二叉树的元素个数为：" + tree.size());//8
+        System.out.println("key为2的元素为：" + tree.get(2));//李四
         tree.delete(1);
-        System.out.println("删除后的元素个数为：" + tree.size());
-        System.out.println("key为1的元素为：" + (String)tree.get(1));
-        System.out.println("最小数为：" + tree.min());
-        System.out.println("最大数为：" + tree.max());
+        System.out.println("删除后的元素个数为：" + tree.size());//7
+        System.out.println("key为1的元素为：" + tree.get(1));//null
+        System.out.println("最小数为：" + tree.min());//2
+        System.out.println("最大数为：" + tree.max());//10
         System.out.println("===============================================");
+        /*
+                                4赵六
+                       2李四              6六六
+                          3王五      5七七      10阿巴
+                                            9舅子
+         */
+        //测试前序遍历
+        //4---赵六
+        //2---李四
+        //3---王五
+        //6---六六
+        //5---七七
+        //10---阿巴
+        //9---舅子
         Queue<Integer> preErgodic = tree.preErgodic();
-        Iterator var4 = preErgodic.iterator();
-
-        while(var4.hasNext()) {
-            Integer i = (Integer)var4.next();
-            System.out.println(i + "---" + (String)tree.get(i));
+        for(Integer key : preErgodic){
+            System.out.println(key + "---" + tree.get(key));
         }
-
         System.out.println("================================================");
+        /*
+                                4赵六
+                       2李四              6六六
+                          3王五      5七七      10阿巴
+                                            9舅子
+         */
+        //测试中序遍历
+        //2---李四
+        //3---王五
+        //4---赵六
+        //6---六六
+        //5---七七
+        //10---阿巴
+        //9---舅子
         Queue<Integer> midErgodic = tree.midErgodic();
-        Iterator var10 = midErgodic.iterator();
-
-        while(var10.hasNext()) {
-            Integer i = (Integer)var10.next();
-            System.out.println(i + "---" + (String)tree.get(i));
+        for(Integer key : midErgodic){
+            System.out.println(key + "---" + tree.get(key));
         }
-
         System.out.println("================================================");
+        /*
+                                4赵六
+                       2李四              6六六
+                          3王五      5七七      10阿巴
+                                            9舅子
+         */
+        //测试后序遍历
+        //2---李四
+        //3---王五
+        //6---六六
+        //5---七七
+        //10---阿巴
+        //9---舅子
+        //4---赵六
         Queue<Integer> afterErgodic = tree.afterErgodic();
-        Iterator var12 = afterErgodic.iterator();
-
-        while(var12.hasNext()) {
-            Integer i = (Integer)var12.next();
-            System.out.println(i + "---" + (String)tree.get(i));
+        for(Integer key : afterErgodic){
+            System.out.println(key + "---" + tree.get(key));
         }
-
         System.out.println("================================================");
+        /*
+                                4赵六
+                       2李四              6六六
+                          3王五      5七七      10阿巴
+                                            9舅子
+         */
+        //测试层序遍历
+        //4---赵六
+        //2---李四
+        //6---六六
+        //3---王五
+        //5---七七
+        //10---阿巴
+        //9---舅子
         Queue<Integer> layerErgodic = tree.layerErgodic();
-        Iterator var14 = layerErgodic.iterator();
-
-        while(var14.hasNext()) {
-            Integer i = (Integer)var14.next();
-            System.out.println(i + "---" + (String)tree.get(i));
+        for(Integer key : layerErgodic){
+            System.out.println(key + "---" + tree.get(key));
         }
-
     }
 }
