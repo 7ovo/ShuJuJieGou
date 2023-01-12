@@ -1,6 +1,6 @@
 package com.chf.tree;
 
-import com.chf.linear.Queue;
+import com.chf.queue.Queue;
 
 public class BinaryTree<K extends Comparable<K>, V> {
     private Node root;

@@ -1,6 +1,6 @@
 package com.chf.tree;
 
-import com.chf.linear.Queue;
+import com.chf.queue.Queue;
 
 /**
  * 模拟折纸问题：下折痕为左子节点 上折痕为右子节点

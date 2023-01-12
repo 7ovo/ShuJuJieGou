@@ -1,4 +1,4 @@
-package com.chf.test;
+package com.chf.algorithm.test;
 
 import com.chf.algorithm.Quick;
 

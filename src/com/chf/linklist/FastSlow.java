@@ -1,4 +1,4 @@
-package com.chf.linear;
+package com.chf.linklist;
 
 /**
  * 1、快慢指针问题

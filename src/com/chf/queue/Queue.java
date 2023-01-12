@@ -1,4 +1,4 @@
-package com.chf.linear;
+package com.chf.queue;
 
 import java.util.Iterator;
 

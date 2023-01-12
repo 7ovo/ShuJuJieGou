@@ -1,6 +1,6 @@
-package com.chf.test;
+package com.chf.algorithm.test;
 
-import com.chf.linear.Queue;
+import com.chf.queue.Queue;
 
 public class QueueTest {
     public static void main(String[] args) {

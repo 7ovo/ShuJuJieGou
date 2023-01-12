@@ -1,6 +1,6 @@
 package com.chf.tree;
 
-import com.chf.linear.Queue;
+import com.chf.queue.Queue;
 
 public class BinaryTreeTest {
     public static void main(String[] args) {

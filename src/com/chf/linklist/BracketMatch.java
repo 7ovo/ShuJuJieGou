@@ -1,4 +1,4 @@
-package com.chf.linear;
+package com.chf.linklist;
 
 import com.chf.stack.Stack;
 
